@@ -1,5 +1,7 @@
 function getComputerChoice(){
     //return 'Rock' || 'Paper' || 'Scissors'
+    const opts = ['Rock', 'Paper', 'Scissors'];
+    return opts[Math.floor(Math.random()*3)];
 }
 
 function playRound(playerSelection, computerSelection){
