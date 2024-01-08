@@ -28,14 +28,22 @@ function playRound(playerSelection, computerSelection){
         if(computerSelection == 'paper') winner = 'ply';
     }
 
-    updateWinner(winner);
+    updateScore(winner);
+    isWinner();
 }
 
 const plyScore = document.querySelector('.plyScore');
 const cmpScore = document.querySelector('.cmpScore');
 
-function updateWinner(winner){
+function updateScore(winner){
     winner == 'ply' ? plyScore.textContent++ : cmpScore.textContent++
+}
+
+function isWinner(){
+    if (plyScore.textContent == '3' || cmpScore.textContent == '3') {
+        plyScore.textContent = '0';
+        cmpScore.textContent = '0';
+    }
 }
 
 function game(){
