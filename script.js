@@ -10,21 +10,32 @@ function playRound(playerSelection, computerSelection){
     //if tie call playRound()
     console.log(`Player chooses: ${playerSelection}`)
     console.log(`Computer chooses: ${computerSelection}`)
-    if(playerSelection == computerSelection) return;
+
+    let winner;
+
+    if(playerSelection == computerSelection) console.log('Tie');
 
     if(playerSelection == 'rock'){
-        if(computerSelection == 'paper') return 'paper';
-        if(computerSelection == 'scissors') return 'rock';
+        if(computerSelection == 'paper') winner = 'cmp';
+        if(computerSelection == 'scissors') winner = 'ply';
     }
     if(playerSelection == 'paper'){
-        if(computerSelection == 'scissors') return 'scissors';
-        if(computerSelection == 'rock') return 'paper';
+        if(computerSelection == 'scissors') winner = 'cmp';
+        if(computerSelection == 'rock') winner = 'ply';
     }
     if(playerSelection == 'scissors') {
-        if(computerSelection == 'rock') return 'rock';
-        if(computerSelection == 'paper') return 'paper';
+        if(computerSelection == 'rock') winner = 'cmp';
+        if(computerSelection == 'paper') winner = 'ply';
     }
-    //return 'Winner' || 'Loser'
+
+    updateWinner(winner);
+}
+
+const plyScore = document.querySelector('.plyScore');
+const cmpScore = document.querySelector('.cmpScore');
+
+function updateWinner(winner){
+    winner == 'ply' ? plyScore.textContent++ : cmpScore.textContent++
 }
 
 function game(){
