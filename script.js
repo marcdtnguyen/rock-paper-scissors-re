@@ -46,28 +46,6 @@ function isWinner(){
     }
 }
 
-function game(){
-    //best of 5
-    //prompt() player input
-    let plyScore = 0;
-    let cmpScore = 0;
-    let opt;
-    let winner;
-    while(plyScore != 3 && cmpScore != 3){
-        opt = prompt('Choose your weapon; Rock, Paper, Scissors:').toLowerCase();
-        while(!opts.includes(opt)){
-            opt = prompt('Choose your weapon AGAIN; Rock, Paper, Scissors:').toLowerCase();
-        }
-        winner = playRound(opt, getComputerChoice());
-        if(winner == undefined) continue;
-        winner == opt ? ++plyScore : ++cmpScore;
-        console.log(`Player Score: ${plyScore}`);
-        console.log(`Computer Score: ${cmpScore}`);
-    }
-
-    return (plyScore == 3) ? 'Player wins' : 'Computer wins';
-}
-
 const weapon = document.querySelector('.weapon');
 
 weapon.addEventListener('click', (e)=>{
