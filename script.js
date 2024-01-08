@@ -48,3 +48,13 @@ function game(){
 
     return (plyScore == 3) ? 'Player wins' : 'Computer wins';
 }
+
+const weapon = document.querySelector('.weapon');
+
+weapon.addEventListener('click', (e)=>{
+    let target = e.target.id;
+
+    if(target !== ''){
+        playRound(target, getComputerChoice());
+    }
+})
