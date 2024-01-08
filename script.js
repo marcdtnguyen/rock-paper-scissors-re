@@ -8,12 +8,15 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     //case insensitive
     //if tie call playRound()
-    console.log(`Player chooses: ${playerSelection}`)
-    console.log(`Computer chooses: ${computerSelection}`)
+    alert(`Player chooses: ${playerSelection}\nComputer chooses: ${computerSelection}`)
+
 
     let winner;
 
-    if(playerSelection == computerSelection) console.log('Tie');
+    if(playerSelection == computerSelection) {
+        alert('It\'s a tie!');
+        return;
+    }
 
     if(playerSelection == 'rock'){
         if(computerSelection == 'paper') winner = 'cmp';
@@ -36,14 +39,27 @@ const plyScore = document.querySelector('.plyScore');
 const cmpScore = document.querySelector('.cmpScore');
 
 function updateScore(winner){
-    winner == 'ply' ? plyScore.textContent++ : cmpScore.textContent++
+    if(winner == 'ply') {
+        ++plyScore.textContent;
+        alert('Player wins this round!')
+    } else {
+        ++cmpScore.textContent;
+        alert('Computer wins this round!')
+    }
 }
 
 function isWinner(){
-    if (plyScore.textContent == '3' || cmpScore.textContent == '3') {
+    if (plyScore.textContent == '3') {
+        alert('Player wins this game!')
         plyScore.textContent = '0';
         cmpScore.textContent = '0';
     }
+    if (cmpScore.textContent == '3') {
+        alert('Computer wins this game!')
+        plyScore.textContent = '0';
+        cmpScore.textContent = '0';
+    }
+
 }
 
 const weapon = document.querySelector('.weapon');
