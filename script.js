@@ -8,13 +8,13 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     //case insensitive
     //if tie call playRound()
-    alert(`Player chooses: ${playerSelection}\nComputer chooses: ${computerSelection}`)
+    h1.textContent = `Player chooses: ${playerSelection}\nComputer chooses: ${computerSelection}`
 
 
     let winner;
 
     if(playerSelection == computerSelection) {
-        alert('It\'s a tie!');
+        h1.textContent = 'It\'s a tie!';
         return;
     }
 
@@ -35,30 +35,30 @@ function playRound(playerSelection, computerSelection){
     isWinner();
 }
 
+const h1 = document.querySelector('h1')
 const plyScore = document.querySelector('.plyScore');
 const cmpScore = document.querySelector('.cmpScore');
 
 function updateScore(winner){
     if(winner == 'ply') {
         ++plyScore.textContent;
-        alert('Player wins this round!')
+        h1.textContent += '\nPlayer wins this round!'
     } else {
         ++cmpScore.textContent;
-        alert('Computer wins this round!')
+        h1.textContent += '\nComputer wins this round!'
     }
 }
 
 function isWinner(){
     if (plyScore.textContent == '3') {
-        alert('Player wins this game!')
-        plyScore.textContent = '0';
-        cmpScore.textContent = '0';
+        h1.textContent += '\nPlayer wins this game!'
+        togReset();
     }
     if (cmpScore.textContent == '3') {
-        alert('Computer wins this game!')
-        plyScore.textContent = '0';
-        cmpScore.textContent = '0';
+        h1.textContent += '\nPlayer wins this game!'
+        togReset();
     }
+
 
 }
 
@@ -71,3 +71,28 @@ weapon.addEventListener('click', (e)=>{
         playRound(target, getComputerChoice());
     }
 })
+
+const btns = document.querySelectorAll('button');
+
+function togBtns(){
+    btns.forEach(b=>b.disabled = b.disabled ? false : true)
+}
+
+const reset = document.createElement('button');
+reset.textContent = 'RESET';
+
+reset.addEventListener('click', ()=>{
+    h1.textContent = 'ROCK PAPER SCISSORS'
+    plyScore.textContent = '0';
+    cmpScore.textContent = '0';
+    togReset()
+})
+
+function togReset(){
+    togBtns()
+    if(document.body.contains(reset)){
+        document.body.removeChild(reset)
+    } else {
+        document.body.appendChild(reset);
+    }
+}
