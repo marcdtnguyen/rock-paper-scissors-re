@@ -48,5 +48,3 @@ function game(){
 
     return (plyScore == 3) ? 'Player wins' : 'Computer wins';
 }
-
-console.log(game())
